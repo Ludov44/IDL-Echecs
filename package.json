@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/main.ts",
-    "serve": "tsc && node ./build/main.js"
+    "serve": "tsc && node ./build/main.js",
+    "test": "alsatian './src/test/ts/**/*.spec.ts' "
   },
   "keywords": [],
   "author": "Gerson Sunyé",
