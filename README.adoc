@@ -265,7 +265,7 @@ export class TestRookMoves {
         // Note: la variable "positionE4" a été créée dans le module "predefined-positions" pour simplifier le code des tests
         
         // Place a rook piece on E4 on an empty chessboard
-        putPiece(chessboard, positions.positionE4, pieces.whiteRook);
+        putPiece(chessboard, positions.E4, pieces.whiteRook);
     }
 
     @Test("A rook can move horizontally")
@@ -286,12 +286,9 @@ Modifiez la fonction `rookMove()`:
 // Dans le fichier "move-validation.ts"
 export function rookMove(board: Chessboard, move: Move): boolean {
     
-    return 
-        // If the start rank is the same as the end rank, it's a valid horizontal move
-        move.from.rank === move.to.rank 
-        // If the start file is the same as the end file, it's a valid vertical move
-        || move.from.file === move.to.file
-        
+    // If the start rank is the same as the end rank, it's a valid horizontal move
+    // If the start file is the same as the end file, it's a valid vertical move
+    return move.from.rank === move.to.rank || move.from.file === move.to.file
 }
 ----
 
