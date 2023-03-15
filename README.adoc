@@ -15,13 +15,13 @@ L'objectif de ce mini-projet est d'utiliser toutes les compétences acquises lor
 
 Avant de commencer à travailler sur le projet, suivez rigoureusement les étapes suivantes :
 
-. Créez une divergence (en anglais, _fork_) du projet suivant sur votre compte GitLab: 
+. Créez une divergence (en anglais, _fork_) du projet suivant: 
 https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
 .. Dans "_Paramètres → Général_", allez dans "_Visibility, project features, permissions_", et mettez "_Project visibility_" à "_Private_".
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
 // TODO nom du groupe dans la description ?
-.. Toujours dans "_Paramètres → Général_", enregistrez ceci comme description du projet : `projet-idl-2023-bTSeydUgj`. 
+.. Toujours dans "_Paramètres → Général_", enregistrez ceci comme description du projet : `idl-projet-2022-2023-bTSeydUgj`. 
 Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 // TODO mettre les intervenants de TP ici ?
 ..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
@@ -90,7 +90,7 @@ Vous n'avez pas besoin de le modifier.
 
 Il est possible que les enseignants aient laissé quelques coquilles dans le projet, et que ces coquilles soient corrigées alors que vous aurez déjà commencé à travailler sur le code.
 
-*Seulement si cette situation se produit*, vous pourrez récupérer les corrections effectuées par les enseignants à l'aide des commandes suivantes :
+*Seulement si un enseignant vous le demande*, vous pourrez récupérer les corrections des coquilles à l'aide des commandes suivantes :
 
 ```sh
 git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023.git # pas besoin si déjà fait
@@ -120,7 +120,7 @@ Puis, une fois le serveur lancé :
 Une fois votre application lancée et ouverte dans un navigateur (voir section précédente), pour déplacer les pièces sur l'échiquier, indiquez dans le formulaire en bas de page la pièce à déplacer et sa destination.
 Utilisez la notation par coordonnées, qui inclut la place à partir de laquelle la pièce se déplace, ainsi que sa destination.
 
-.Par exemple:
+.Exemples de coups
 |===
 |Coup |Coordonnées |Description 
 
@@ -153,7 +153,6 @@ Le serveur traite alors la requête afin de jouer le coup demandé.
 
 . La page internet du joueur est alors rechargée automatiquement, affichant ainsi le nouvel état de la partie.
 
-. etc…
 
 == Travail à réaliser
 
@@ -200,7 +199,7 @@ function colorPieceMove(board: Chessboard, move: Move): boolean
 ----
 
 Le paramètre `board` contient l'échiquier de la partie en cours et `move` contient le déplacement demandé par le joueur à travers le navigateur.
-Le paramètre `move` contient 2 coordonnées de type `Position`, représentant le début et la fin du déplacement.
+Le paramètre `move` contient deux coordonnées de type `Position`, représentant le début et la fin du déplacement.
 Les coordonnées indiquent *toujours* des cases à l'intérieur de l'échiquier, c'est à dire, une colonne entre `A` et `H` et une ligne entre `1` et `8`.
 Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à l'extérieur de l'échiquier.
 
@@ -214,18 +213,20 @@ Vous devez procéder par itérations successives, n'essayez pas d'implémenter l
 . Exécutez les tests pour vérifier que la fonctionnalité marche correctement et la non-régression.
 . Recommencez avec la fonctionnalité suivante.
 
-Par exemple, lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
+
+==== Exemple: validation des mouvements d'une Tour en plusieurs étapes
+
+
+Lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
 
 * Validation des mouvements horizontaux, verticaux et diagonaux, sans se préoccuper des autres pièces.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque la case finale contient une pièce de même couleur.
 * Validation des mouvements (horizontaux, verticaux et diagonaux) qui se terminent sur une case contenant une pièce d'une couleur différente.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque toutes les cases intermédiaires ne sont pas vides.
 
-==== Exemple: validation des mouvements d'une Tour en plusieurs étapes
-
 ===== Etape 1
 
-Commencez par la 1e fonctionnalité, la validation des déplacements horizontaux:
+Commencez par la première fonctionnalité, la validation des déplacements horizontaux:
 
 [source,ts]
 ----
