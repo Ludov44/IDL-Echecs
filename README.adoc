@@ -180,7 +180,7 @@ En interne, le traitement des déplacements se fait de la façon suivante:
 
 . Lorsqu'une requête *POST* arrive, le serveur extrait la valeur du champ envoyé et appelle la fonction `processMove()` du module `movements`.
 
-. La fonction `processMove()` appelle une autre fonction, `parseMoveString()`, qui transforme une chaîne de caractères en un déplacement (`interface Move`) entre 2 positions (`interface Position`).
+. La fonction `processMove()` appelle une autre fonction, `parseMoveString()`, qui transforme une chaîne de caractères en un déplacement (`type Move`) entre 2 positions (`type Position`).
 
 . La fonction `processMove()` appelle ensuite la fonction `isMovePossible()`, qui fait appel à différentes fonctions de validation spécifiques aux pièces de l'échiquier (une par type de pièce). 
 Le module `move-validation` contient toutes les fonctions de validation de déplacements.
