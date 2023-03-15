@@ -215,8 +215,7 @@ Vous devez procéder par itérations successives, n'essayez pas d'implémenter l
 . Recommencez avec la fonctionnalité suivante.
 
 
-.Exemple: validation des mouvements d'une Tour en plusieurs étapes
-****
+*Exemple: validation des mouvements d'une Tour en plusieurs étapes*
 
 
 Lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
@@ -226,7 +225,7 @@ Lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`
 * Validation des mouvements (horizontaux, verticaux et diagonaux) qui se terminent sur une case contenant une pièce d'une couleur différente.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque toutes les cases intermédiaires ne sont pas vides.
 
-*Etape 1*
+_Etape 1_
 
 Commencez par la première fonctionnalité, la validation des déplacements horizontaux:
 
@@ -268,7 +267,7 @@ export class TestRookMoves {
 }
 ----
 
-*Etape 2*
+_Etape 2_
 
 Nouvelle fonctionnalité à implémenter: la validation des déplacements verticaux. 
 Modifiez la fonction `rookMove()`:
@@ -298,11 +297,11 @@ export class TestRookMoves {
 }
 ----
 
-*Étapes suivantes*
+_Étapes suivantes_
 
 Suivez la même démarche pour implémenter et tester les autres fonctionnalités, c'est à dire, les autres mouvements possibles des Tours.
 
-****
+
 
 === Qualité du code exigée
 
