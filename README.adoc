@@ -113,15 +113,24 @@ git pull upstream master
 
 === Exécution des tests unitaires, exécution de l'application
 
-* Le projet utilise l'outil de construction et de gestion de modules *npm*.
-Plusieurs commandes exécutables avec `npm` vous sont fournies :
+Le projet utilise l'outil de construction et de gestion de modules *npm*.
+Deux principales commandes vous sont fournies, exécutables avec `npm` :
+
 ** Pour lancer tous les tests unitaires du projet avec Alsatian, exécutez: `npm run test`.
 ** Pour lancer le serveur en mode développement, exécutez: `npm run start-server`.
 Puis, une fois le serveur lancé :
 *** pour accéder à l'application, ouvrez l'URL suivante: http://localhost:8080,
 *** pour accéder au contenu JSON de l'échiquier en cours, utilisez l'URL suivante: http://localhost:8080/status.js.
+
+
+NOTE: Comme vu en TP, il ne faut pas hésiter à lancer ces deux commandes en mode _Debug_, afin de pouvoir profiter du débogueur !
+Pour rappel, nécessite de passer par l'encart _NPM Scripts_ que vous pouvez afficher tout en bas à gauche de VSCode (si besoin, retournez voir les instructions fournies dans le TP sur le test).
+
+Deux commandes optionnelles vous sont également fournies :
+
 ** Pour supprimer le code compilé, exécutez: `npm run clean`.
-** Pour supprimer les dépendances téléchargées avec `npm install`, exécutez: `npm run clean-deps`.
+** Pour supprimer les dépendances téléchargées, exécutez: `npm run clean-deps`.
+
 
 === Manuel d'utilisation de l'application
 
