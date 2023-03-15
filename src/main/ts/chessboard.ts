@@ -4,14 +4,14 @@ import {Move} from './movements'
 import { Position } from './position';
 
 export function isEmpty(chessboard : Chessboard, position : Position): boolean {
-    let square: Square = squareAtPosition(chessboard, position);
+    const square: Square = squareAtPosition(chessboard, position);
     return square.isEmpty;
 }
 
 export function emptyfile(chessboard : Chessboard, move: Move): boolean {
     let start:  number;
     let end : number;
-    let file : number = move.from!.file;
+    const file : number = move.from!.file;
 
     if (file !== move.to!.file) { 
         //should not happen
@@ -31,42 +31,42 @@ export function emptyfile(chessboard : Chessboard, move: Move): boolean {
         i++;
     }
 
-    return i === end;
+    return i == end;
 }
 
-export interface Square {
+export type Square = {
     position : Position
     isEmpty  : boolean
-    piece?    : Piece
+    piece    : Piece
   }
 
-export interface Chessboard {
+export type Chessboard = {
     board       : Array<Array<Square>> 
     nbCoups     : number              //nombre de coups joués
     historique  : Array<Move>      //historique des coups (optionnel)
 }
 
 export function squareAtPosition(chessboard: Chessboard, position : Position): Square {
-    let square: Square = chessboard.board[position.file][position.rank];
+    const square: Square = chessboard.board[position.file][position.rank];
 
     return square;
 }
 
 export function pieceAtPosition(chessboard: Chessboard, position : Position): Piece {
-    let square: Square = squareAtPosition(chessboard, position);
+    const square: Square = squareAtPosition(chessboard, position);
     return square.piece!;
 }
 
 /** Retourne un échiquier initialisé en début de partie **/
 export function createInitialChessboard(): Chessboard {
-    let chessboard : Chessboard = createChessboard();
+    const chessboard : Chessboard = createChessboard();
 
 
     // ranks 2 - 6 are empty
     for(let rank: number = 2; rank < 6; rank++) {
         for(let col: number = 0; col < 8; col++) {
-            let position: Position = {rank : rank, file : col};
-            let square : Square = {position : position, isEmpty : true};
+            const position: Position = {rank : rank, file : col};
+            const square : Square = {position : position, isEmpty : true, piece: pieces.NULL_PIECE};
             chessboard.board[col][rank] = square;
         }
     }
@@ -97,22 +97,22 @@ export function createInitialChessboard(): Chessboard {
     putPieceAtCoordinate(chessboard, 6, 0, pieces.whiteKnight);
     putPieceAtCoordinate(chessboard, 6, 7, pieces.blackKnight);
 
-    // Roocks
-    putPieceAtCoordinate(chessboard, 0, 0, pieces.whiteRoock);
-    putPieceAtCoordinate(chessboard, 0, 7, pieces.blackRoock);
-    putPieceAtCoordinate(chessboard, 7, 0, pieces.whiteRoock);
-    putPieceAtCoordinate(chessboard, 7, 7, pieces.blackRoock);
+    // Rooks
+    putPieceAtCoordinate(chessboard, 0, 0, pieces.whiteRook);
+    putPieceAtCoordinate(chessboard, 0, 7, pieces.blackRook);
+    putPieceAtCoordinate(chessboard, 7, 0, pieces.whiteRook);
+    putPieceAtCoordinate(chessboard, 7, 7, pieces.blackRook);
 
     return chessboard;
 }
 
 export function createEmptyChessboard(): Chessboard {
-    let newChessboard : Chessboard = createChessboard();
+    const newChessboard : Chessboard = createChessboard();
 
     for(let rank: number = 0; rank < 8; rank++) {
         for(let col: number = 0; col < 8; col++) {
-            let position: Position = {rank : rank, file : col};
-            let square : Square = {position : position, isEmpty : true};
+            const position: Position = {rank : rank, file : col};
+            const square : Square = {position : position, isEmpty : true, piece: pieces.NULL_PIECE};
             newChessboard.board[col][rank] = square;
         }
     }
@@ -121,12 +121,12 @@ export function createEmptyChessboard(): Chessboard {
 }
 
 function createChessboard(): Chessboard {
-    let board : Square[][] = []
+    const board : Square[][] = []
     for (let i = 0; i < 8; i++) {
         board[i] = [];
     }
 
-    let newChessboard : Chessboard = {
+    const newChessboard : Chessboard = {
         nbCoups:0,
         board:board,
         historique:[]
@@ -136,12 +136,12 @@ function createChessboard(): Chessboard {
 }
 
 function putPieceAtCoordinate(chessboard: Chessboard, file : number, rank: number, piece : Piece) {
-    let position : Position = {rank : rank, file : file};
+    const position : Position = {rank : rank, file : file};
     return putPiece(chessboard, position, piece);
 }
 
 export function putPiece(chessboard: Chessboard, position: Position, piece : Piece) {
-    let board : Array<Array<Square>> = chessboard.board;
-    let square : Square = {position : position, isEmpty : false, piece : piece};
+    const board : Array<Array<Square>> = chessboard.board;
+    const square : Square = {position : position, isEmpty : false, piece : piece};
     board[position.file][position.rank] = square;
 }

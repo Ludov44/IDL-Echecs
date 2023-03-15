@@ -17,8 +17,8 @@ class HttpServer {
   }
 
   public onStart(): void {
-    let chessboard: Chessboard = createInitialChessboard();
-    let app: express.Application = express();
+    const chessboard: Chessboard = createInitialChessboard();
+    const app: express.Application = express();
     
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,13 +38,13 @@ class HttpServer {
     });
 
     app.post("/", (req: express.Request, res: express.Response) => {
-      let unparsedMove: string = req.body.move;
-      let didPerfom: boolean = processMove(chessboard, unparsedMove);
-      let message: string = didPerfom ? "" : "Invalid movement!"
+      const unparsedMove: string = req.body.move;
+      const didPerfom: boolean = processMove(chessboard, unparsedMove);
+      const message: string = didPerfom ? "" : "Invalid movement!"
       res.render('index', {error: message});
     });
   }
 }
 
-let server: HttpServer = new HttpServer(PORT)
+const server: HttpServer = new HttpServer(PORT)
 server.onStart();

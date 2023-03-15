@@ -1,15 +1,16 @@
 import { Chessboard, squareAtPosition, Square } from './chessboard'
 import { Position } from "./position";
+import * as position from './position';
 import * as pieces from './piece'
 import {Piece}  from './piece'
 import * as isPossible from './move-validation'
 
 const VALID_MOVE_STRING: RegExp = new RegExp('([a-h]|[A-H])([1-8])-([A-H]|[a-h])([1-8])')
 
-export interface Move {
+export type Move = {
     isValid : boolean;
-    from?   : Position;
-    to?     : Position;
+    from   : Position;
+    to     : Position;
 }
 
 /**
@@ -20,7 +21,7 @@ export interface Move {
  * @param to The final position
  */
 export function move(from: Position, to: Position): Move {
-    let move: Move = {from: from, to: to, isValid: true};
+    const move: Move = {from: from, to: to, isValid: true};
     return move;
 }
 
@@ -34,7 +35,7 @@ export function move(from: Position, to: Position): Move {
  * @returns true, if the move is valid and possible
  */
 export function processMove(chessboard:Chessboard, moveString: string): boolean {
-    let move : Move = parseMoveString(moveString);
+    const move : Move = parseMoveString(moveString);
 
     if (move.isValid && isMovePossible(chessboard, move)) {
         performMove(chessboard, move); 
@@ -47,25 +48,25 @@ export function processMove(chessboard:Chessboard, moveString: string): boolean 
 
 /**
  * Parses a string in the format "A1-F8" and returns a Move.
- * If the format is not valid, returns a Move with isValid === false.
+ * If the format is not valid, returns a Move with isValid == false.
  * 
  * @param movementString A 5 characters string containing a move
  */
 export function parseMoveString(movementString: string): Move {
     let newMove : Move;
     if (movementString.length != 5 ||  ! movementString.match(VALID_MOVE_STRING)) {
-        let invalidMove : Move = {isValid : false};
+        const invalidMove: Move = { isValid: false, from: position.NULL_POSITION, to: position.NULL_POSITION };
         newMove = invalidMove;
     } else {
-        let fromFile  : number = movementString.charCodeAt(0);
-        let fromRank    : number = parseInt(movementString[1]);
-        let toFile      : number = movementString.charCodeAt(3);
-        let toRank      : number = parseInt(movementString[4]);
+        const fromFile  : number = movementString.charCodeAt(0);
+        const fromRank    : number = parseInt(movementString[1]);
+        const toFile      : number = movementString.charCodeAt(3);
+        const toRank      : number = parseInt(movementString[4]);
 
         // In Unicode, charCode('A') == 65, charCode('a') == 97
         // Remember that Arrays start from [0][0] == position 'A1'
-        let from : Position = {rank : fromRank -1, file: fromFile > 90 ? fromFile - 97 : fromFile - 65}
-        let to   : Position = {rank : toRank -1, file: toFile > 90 ? toFile - 97 : toFile - 65 }
+        const from : Position = {rank : fromRank -1, file: fromFile > 90 ? fromFile - 97 : fromFile - 65}
+        const to   : Position = {rank : toRank -1, file: toFile > 90 ? toFile - 97 : toFile - 65 }
 
         newMove = {isValid: true, from: from, to: to}
     }
@@ -78,10 +79,10 @@ export function parseMoveString(movementString: string): Move {
  * @param move 
  */
 function isMovePossible(chessboard : Chessboard, move : Move): boolean {
-    let square: Square = squareAtPosition(chessboard, move.from!);
+    const square: Square = squareAtPosition(chessboard, move.from!);
     if (square.isEmpty) { return false;}
 
-    let piece : Piece = square.piece!;
+    const piece : Piece = square.piece!;
 
     switch(piece) {
         case pieces.whitePawn  : return isPossible.whitePawnMove(chessboard, move);
@@ -90,20 +91,20 @@ function isMovePossible(chessboard : Chessboard, move : Move): boolean {
         case pieces.whiteQueen : return isPossible.queenMove(chessboard, move);
         case pieces.whiteBishop: return isPossible.bishopMove(chessboard, move);
         case pieces.whiteKnight: return isPossible.knightMove(chessboard, move);
-        case pieces.whiteRoock : return isPossible.rookMove(chessboard, move);
+        case pieces.whiteRook : return isPossible.rookMove(chessboard, move);
         case pieces.blackKing  : return isPossible.kingMove(chessboard, move);
         case pieces.blackQueen : return isPossible.queenMove(chessboard, move);
         case pieces.blackBishop: return isPossible.bishopMove(chessboard, move);
         case pieces.blackKnight: return isPossible.knightMove(chessboard, move);
-        case pieces.blackRoock : return isPossible.rookMove(chessboard, move);
+        case pieces.blackRook : return isPossible.rookMove(chessboard, move);
     }
 
     return false;
 }
 
 function performMove(board : Chessboard, move : Move) {
-    let source      : Square = squareAtPosition(board, move.from!);
-    let destination : Square = squareAtPosition(board, move.to!);
+    const source      : Square = squareAtPosition(board, move.from!);
+    const destination : Square = squareAtPosition(board, move.to!);
 
     destination.piece = source.piece;
     destination.isEmpty = false;
