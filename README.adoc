@@ -245,7 +245,8 @@ Commencez par la première fonctionnalité, la validation des déplacements hori
 ----
 // Dans le fichier "move-validation.ts"
 export function rookMove(board: Chessboard, move: Move): boolean {
-    return move.from.rank === move.to.rank; // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
+    // If the start rank is the same as the end rank, it's a valid horizontal move
+    return move.from.rank === move.to.rank; 
 }
 ----
 
@@ -261,20 +262,16 @@ export class TestRookMoves {
     beforeEach(){
         chessboard = createEmptyChessboard();
 
-        // La variable "positionE4" a été créée au début du module pour simplifier le code des tests
-        // Place une Tour sur la case E4 d'un échiquier vide:
-
-        putPiece(chessboard, positionE4, pieces.whiteRook);
+        // Note: la variable "positionE4" a été créée dans le module "predefined-positions" pour simplifier le code des tests
+        
+        // Place a rook piece on E4 on an empty chessboard
+        putPiece(chessboard, positions.positionE4, pieces.whiteRook);
     }
 
     @Test("A rook can move horizontally")
     testCanMoveHorizontally() {
-        // Les variable "moveE4_H4" et "moveE4_14" ont été créées au début 
-        // du module pour simplifier le code des tests.
-        // Le déplacement doit être possible:
-
-        Expect(isPossible.rookMove(chessboard, moveE4_H4)).toBeTruthy();
-        Expect(isPossible.rookMove(chessboard, moveE4_A4)).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, { from: positions.E4, to: positions.H4 })).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, { from: positions.E4, to: positions.A4 })).toBeTruthy();
     }
 }
 ----
@@ -288,8 +285,13 @@ Modifiez la fonction `rookMove()`:
 ----
 // Dans le fichier "move-validation.ts"
 export function rookMove(board: Chessboard, move: Move): boolean {
-    return move.from.rank === move.to.rank || // Si les lignes de début de fin sont les mêmes, le déplacement est horizontal
-        move.from.file === move.to.file;  // Si les colonnes de début de fin sont les mêmes, le déplacement est vertical
+    
+    return 
+        // If the start rank is the same as the end rank, it's a valid horizontal move
+        move.from.rank === move.to.rank 
+        // If the start file is the same as the end file, it's a valid vertical move
+        || move.from.file === move.to.file
+        
 }
 ----
 
@@ -303,8 +305,8 @@ export class TestRookMoves {
 
     @Test("A Rook can move vertically")
     testCanMoveVertically() {
-        Expect(isPossible.rookMove(chessboard, moveE4_E8)).toBeTruthy();
-        Expect(isPossible.rookMove(chessboard, moveE4_E1)).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, { from: positions.E4, to: positions.E8 })).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, { from: positions.E4, to: positions.E1 })).toBeTruthy();
     }
 }
 ----
