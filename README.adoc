@@ -189,8 +189,11 @@ Le module `move-validation` contient toutes les fonctions de validation de dépl
 
 . Si le mouvement est possible, c'est à dire la fonction `isMovePossible()` retourne `true`, la fonction `processMove()` appelle la fonction `performMove()`, qui effectue le déplacement.
 
-Vous devez donc parcourir le module `move-validation` et implémenter les fonctions de validation contenant le commentaire `// #TODO:`. 
+Vous devez donc parcourir le module `move-validation` et implémenter les fonctions de validation contenant un commentaire de la forme :
 
+```ts
+// #TODO: Implement this function
+```
 
 WARNING: Vous serez évalués sur le bon fonctionnement de vos fonctions de validation.
 
