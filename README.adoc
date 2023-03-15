@@ -201,11 +201,12 @@ Les mouvements sont possibles (ou impossibles) en accord avec les https://fr.wik
 Comme ces règles sont complexes, vous serez mené à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
 
 Les signatures des fonctions du module `move-validation` suivent la même convention :
-
 [source,ts]
 ----
-function colorPieceMove(board: Chessboard, move: Move): boolean
+function xxxMove(board: Chessboard, move: Move): boolean
 ----
+
+avec `xxx` prenant le nom de la pièce concernée, donnant par exemple `kingMove`.
 
 Le paramètre `board` contient l'échiquier de la partie en cours et `move` contient le déplacement demandé par le joueur à travers le navigateur.
 Le paramètre `move` contient deux coordonnées de type `Position`, représentant le début et la fin du déplacement.
