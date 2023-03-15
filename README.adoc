@@ -34,7 +34,7 @@ Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à v
 === Analyse de la structure du projet
 
 Regardez la structure du projet. Le projet est organisé en différents dossiers :
-+
+
 [source,txt]
 ----
 ├── client
@@ -185,8 +185,6 @@ Vous devez donc parcourir le module `move-validation` et implémenter les foncti
 
 ==== Tests unitaires
 
-TODO
-
 Pour vérifier que les fonctions du module `move-validation` fonctionnent correctement, vous devez écrire des tests unitaires, qui vont vérifier que les fonctions acceptent les mouvements possibles et n'acceptent pas les mouvements impossibles.
 Les mouvements sont possibles (ou impossibles) en accord avec les https://fr.wikipedia.org/wiki/Échecs[règles des échecs].
 Comme ces règles sont complexes, vous serez mené à écrire plusieurs tests unitaires pour vérifier les mouvements possibles et impossibles d'une même pièce.
@@ -206,6 +204,9 @@ Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à 
 Les tests unitaires de la fonction `blackPawnMove()` ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/pawn-move-validation-spec.ts`.
 *Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ces fichiers !* 
 
+
+==== Comment procéder ?
+
 Vous devez procéder par itérations successives, n'essayez pas d'implémenter les fonctions d'un seul trait. Observez le cycle de développement suivant :
 
 . Implémentez une fonctionnalité simple.
@@ -214,7 +215,8 @@ Vous devez procéder par itérations successives, n'essayez pas d'implémenter l
 . Recommencez avec la fonctionnalité suivante.
 
 
-==== Exemple: validation des mouvements d'une Tour en plusieurs étapes
+.Exemple: validation des mouvements d'une Tour en plusieurs étapes
+****
 
 
 Lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`rookMove()`), vous pouvez subdiviser leurs comportements en différentes fonctionnalités : 
@@ -224,7 +226,7 @@ Lorsque vous allez implémenter la fonction qui valide le mouvement des Tours (`
 * Validation des mouvements (horizontaux, verticaux et diagonaux) qui se terminent sur une case contenant une pièce d'une couleur différente.
 * Invalidation des mouvements (horizontaux, verticaux et diagonaux) lorsque toutes les cases intermédiaires ne sont pas vides.
 
-===== Etape 1
+*Etape 1*
 
 Commencez par la première fonctionnalité, la validation des déplacements horizontaux:
 
@@ -266,7 +268,7 @@ export class TestRookMoves {
 }
 ----
 
-===== Etape 2
+*Etape 2*
 
 Nouvelle fonctionnalité à implémenter: la validation des déplacements verticaux. 
 Modifiez la fonction `rookMove()`:
@@ -296,9 +298,11 @@ export class TestRookMoves {
 }
 ----
 
-===== Étapes suivantes
+*Étapes suivantes*
 
 Suivez la même démarche pour implémenter et tester les autres fonctionnalités, c'est à dire, les autres mouvements possibles des Tours.
+
+****
 
 === Qualité du code exigée
 
