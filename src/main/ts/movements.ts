@@ -8,10 +8,12 @@ import * as isPossible from './move-validation'
 const VALID_MOVE_STRING: RegExp = new RegExp('([a-h]|[A-H])([1-8])-([A-H]|[a-h])([1-8])')
 
 export type Move = {
-    isValid : boolean;
     from   : Position;
     to     : Position;
 }
+
+export const NULL_MOVE: Move = { from: position.NULL_POSITION, to: position.NULL_POSITION }
+
 
 /**
  * Creates a new Move from two Positions, representing
@@ -21,7 +23,7 @@ export type Move = {
  * @param to The final position
  */
 export function move(from: Position, to: Position): Move {
-    const move: Move = {from: from, to: to, isValid: true};
+    const move: Move = {from: from, to: to};
     return move;
 }
 
@@ -37,7 +39,7 @@ export function move(from: Position, to: Position): Move {
 export function processMove(chessboard:Chessboard, moveString: string): boolean {
     const move : Move = parseMoveString(moveString);
 
-    if (move.isValid && isMovePossible(chessboard, move)) {
+    if (move != NULL_MOVE && isMovePossible(chessboard, move)) {
         performMove(chessboard, move); 
     } else {
         console.log("Invalid movement !");
@@ -48,15 +50,14 @@ export function processMove(chessboard:Chessboard, moveString: string): boolean 
 
 /**
  * Parses a string in the format "A1-F8" and returns a Move.
- * If the format is not valid, returns a Move with isValid == false.
+ * If the format is not valid, returns a NULL_MOVE
  * 
  * @param movementString A 5 characters string containing a move
  */
 export function parseMoveString(movementString: string): Move {
     let newMove : Move;
     if (movementString.length != 5 ||  ! movementString.match(VALID_MOVE_STRING)) {
-        const invalidMove: Move = { isValid: false, from: position.NULL_POSITION, to: position.NULL_POSITION };
-        newMove = invalidMove;
+        newMove = NULL_MOVE;
     } else {
         const fromFile  : number = movementString.charCodeAt(0);
         const fromRank    : number = parseInt(movementString[1]);
@@ -68,7 +69,7 @@ export function parseMoveString(movementString: string): Move {
         const from : Position = {rank : fromRank -1, file: fromFile > 90 ? fromFile - 97 : fromFile - 65}
         const to   : Position = {rank : toRank -1, file: toFile > 90 ? toFile - 97 : toFile - 65 }
 
-        newMove = {isValid: true, from: from, to: to}
+        newMove = {from: from, to: to}
     }
     return newMove;
 }
