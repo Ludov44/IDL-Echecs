@@ -20,10 +20,18 @@ https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
 .. Dans "_Paramètres → Général_", allez dans "_Visibility, project features, permissions_", et mettez "_Project visibility_" à "_Private_".
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
-// TODO nom du groupe dans la description ?
-.. Toujours dans "_Paramètres → Général_", enregistrez ceci comme description du projet : `idl-projet-2022-2023-bTSeydUgj`. 
-Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
-// TODO mettre les intervenants de TP ici ?
+.. Toujours dans "_Paramètres → Général_", saisissez rigoureusement la _description_ de projet suivante, différente pour chaque groupe de TP :
+*** Groupe 284I :  `idl_projet_2022-2023_284I`
+*** Groupe 284J :  `idl_projet_2022-2023_284J`
+*** Groupe 285K :  `idl_projet_2022-2023_285K`
+*** Groupe 285L :  `idl_projet_2022-2023_285L`
+*** Groupe 286M-288R :  `idl_projet_2022-2023_286M-288R`
+*** Groupe 286N :  `idl_projet_2022-2023_286N`
+*** Groupe 287O :  `idl_projet_2022-2023_287O`
+*** Groupe 287P :  `idl_projet_2022-2023_287P`
+*** Groupe 288Q :  `idl_projet_2022-2023_288Q`
++
+NOTE: Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 ..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
 Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
 ..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
@@ -183,6 +191,9 @@ Le module `move-validation` contient toutes les fonctions de validation de dépl
 
 Vous devez donc parcourir le module `move-validation` et implémenter les fonctions de validation contenant le commentaire `// #TODO:`. 
 
+
+WARNING: Vous serez évalués sur le bon fonctionnement de vos fonctions de validation.
+
 ==== Tests unitaires
 
 Pour vérifier que les fonctions du module `move-validation` fonctionnent correctement, vous devez écrire des tests unitaires, qui vont vérifier que les fonctions acceptent les mouvements possibles et n'acceptent pas les mouvements impossibles.
@@ -204,6 +215,7 @@ Donc, il n'y a pas besoin de vérifier si un déplacement conduit une pièce à 
 Les tests unitaires de la fonction `blackPawnMove()` ont déjà été implémentés, vous les trouverez dans le fichier `./src/test/ts/pawn-move-validation-spec.ts`.
 *Vous devez compléter tous les squelettes de tests unitaires fournis à l'intérieur de ces fichiers !* 
 
+WARNING: Vous serez évalués sur le bon fonctionnement de vos tests.
 
 ==== Comment procéder ?
 
@@ -305,15 +317,27 @@ Suivez la même démarche pour implémenter et tester les autres fonctionnalité
 
 === Qualité du code exigée
 
-TODO
+Il est demandé que votre travail respecte tous les principes de qualité de code étudiés en cours et en TP, ce qui inclut :
+
+- Nommage approprié de vos fonctions et variables,
+- Usage de commentaire lorsque c'est nécessaire et approprié,
+- Simplification du code lorsque c'est possible.
+
+WARNING: Vous serez évalués sur la qualité du code que vous aurez produit.
 
 === Utilisation de Gitlab et git
 
-TODO
+Il est demandé que votre développement soit entièrement versionné à l'aide de Gitlab et git.
+Vous devez enregistrer tous les changements que vous réalisez à l'aide de _commits_ et de _pushs_ sur votre référentiel distant, en choisissant à chaque fois des messages de commit appropriés.
+Vous devez également utiliser git pour collaborer à plusieurs sur votre projet, en partageant le même référentiel distant auprès de tous les membres du groupe.
+
+*Conseil* : effectuez des _commits_ et des _pushs_ régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
+
+
+
+WARNING: Vous serez évalués sur votre usage de git, que ce soit la qualité des messages de _commit_, la fréquence des commits, et l'équilibre de la répartition des _commits_ entre les différents membres du groupe.
 
 === Rendre votre travail
-
-TODO
 
 Pour rendre votre projet, il vous suffit de vous assurer d'avoir parfaitement bien suivi ce qui est demandé dans la partie "Préparation" au début de ce document, et d'avoir bien validé (_commit_) et publié (_push_) tous vos changements et fichiers de travail.
 Nous vous encourageons à vérifier plusieurs fois que tout a bien été fait exactement comme demandé, autrement nous ne pourrons pas avoir accès à vos projets pour les corriger.
@@ -330,4 +354,3 @@ Tant que tout cela est bien fait avant la date limite de rendu, alors tout est b
 
 * Écrivez les tests unitaires avant ou en même temps que les fonctions. Ne les laissez pas pour la fin, les test unitaires sont très utiles pendant le développement et vous feront gagner du temps.
 
-* Faites bon usage de `git` : effectuez des validations (_commits_) et des publications (_pushs_) régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
