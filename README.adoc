@@ -20,21 +20,70 @@ https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
 .. Dans "_Paramètres → Général_", allez dans "_Visibility, project features, permissions_", et mettez "_Project visibility_" à "_Private_".
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
-.. Toujours dans "_Paramètres → Général_", saisissez rigoureusement la _description_ de projet suivante, différente pour chaque groupe de TP :
-*** Groupe 284I :  `idl_projet_2022-2023_284I`
-*** Groupe 284J :  `idl_projet_2022-2023_284J`
-*** Groupe 285K :  `idl_projet_2022-2023_285K`
-*** Groupe 285L :  `idl_projet_2022-2023_285L`
-*** Groupe 286M-288R :  `idl_projet_2022-2023_286M-288R`
-*** Groupe 286N :  `idl_projet_2022-2023_286N`
-*** Groupe 287O :  `idl_projet_2022-2023_287O`
-*** Groupe 287P :  `idl_projet_2022-2023_287P`
-*** Groupe 288Q :  `idl_projet_2022-2023_288Q`
+.. Toujours dans "_Paramètres → Général_", saisissez rigoureusement la _description_ de projet suivante, différente pour chaque groupe de TP — consultez le tableau ci-après.
 +
 NOTE: Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
-..  Dans "_Paramètres → Membres_", ajoutez comme nouveau membre l'utilisateur virtuel appelé *Naobot*, avec le statut "_Reporter_".
-Cet utilisateur virtuel que nous contrôlons nous donne le droit d'accéder à votre travail et nous permettra de récupérer vos projets.
+..  Dans "_Paramètres → Membres_", donnez accès à votre projet à votre enseignant de TP, avec le statut "_Reporter_".
+Pour savoir quel compte ajouter, consultez le tableau ci-après.
 ..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
+
+
+[cols="1,2,2"]
+|===
+|Si votre groupe de TP est… | Vous mettez comme _Description_ | Vous ajoutez ce compte enseignant comme _Membre_ de type _Reporter_
+
+// 284I: GA
+|284I
+|`idl_projet_2022-2023_284I`
+|_À venir_
+
+// 284J: GS
+|284J
+|`idl_projet_2022-2023_284J`
+|_À venir_
+
+// 285K: JE
+|285K
+|`idl_projet_2022-2023_285K`
+|_À venir_
+
+// 285L: DJ
+|285L
+|`idl_projet_2022-2023_285L`
+|_À venir_
+
+// 286M-288R : EL
+|286M-288R
+|`idl_projet_2022-2023_286M-288R`
+|_À venir_
+
+// 286N: JE
+|286N
+|`idl_projet_2022-2023_286N`
+|_À venir_
+
+// 287O: EB
+|287O
+|`idl_projet_2022-2023_287O`
+| image:img/bousse-e-clone.png[]
+
+// 287P: EL
+|287P
+|`idl_projet_2022-2023_287P`
+|_À venir_
+
+// 288Q: JE
+|288Q
+|`idl_projet_2022-2023_288Q`
+|_À venir_
+
+
+
+|===
+
+
+Ensuite terminez de préparer votre répertoire de travail :
+
 . Ouvrez le _Terminal_ et effectuez une commande `git clone` appropriée pour récupérer votre divergence sur votre poste de travail.
 *Il vous est recommandé d'utiliser l'adresse SSH de votre divergence pour faire le clone, si vous avez au préalable configuré votre accès SSH link:https://gitlab.univ-nantes.fr/naomod/idl/labs/-/tree/master/tp-gitlab#user-content-optionnel-activation-du-clone-par-ssh-dans-gitlab[comme expliqué dans le TP Gitlab].*
 . Utilisez la commande `cd` pour vous rendre dans le répertoire créé par votre `git clone`, et faites la commande `npm install` pour télécharger les dépendances nécessaires.
