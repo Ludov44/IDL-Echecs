@@ -16,8 +16,8 @@ WARNING: *Ce projet est à réaliser obligatoirement par groupe de deux* ! Les g
 
 Avant de commencer à travailler sur le projet, suivez rigoureusement les étapes suivantes :
 
-. Créez une divergence (en anglais, _fork_) du projet suivant: 
-https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/
+. Créez une divergence (en anglais, _fork_) du projet ici-présent (
+https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/)
 . Configurez votre nouveau projet Gitlab obtenu via la divergence de la manière suivante :
 .. Dans "_Paramètres → Général_", allez dans "_Visibility, project features, permissions_", et mettez "_Project visibility_" à "_Private_".
 Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code source.
