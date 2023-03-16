@@ -28,7 +28,7 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 ..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
 
 
-[cols="1,2,2"]
+[cols="2,3,3"]
 |===
 |Si votre groupe de TP est… | Vous mettez comme _Description_ | Vous ajoutez ce compte enseignant comme _Membre_ de type _Reporter_
 
