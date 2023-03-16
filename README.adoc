@@ -14,7 +14,7 @@ WARNING: *Ce projet est à réaliser obligatoirement par groupe de deux* ! Les g
 
 === Création de votre divergence
 
-Avant de commencer à travailler sur le projet, suivez rigoureusement les étapes suivantes :
+Une seule fois par binôme, avant de commencer à travailler sur le projet, suivez rigoureusement les étapes suivantes :
 
 . Créez une divergence (en anglais, _fork_) du projet ici-présent (
 https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023/)
@@ -26,7 +26,7 @@ Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code sour
 NOTE: Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 ..  Dans "_Informations du projet → Membres_", donnez accès à votre projet à votre enseignant de TP, avec le statut "_Reporter_".
 Pour savoir quel compte ajouter, consultez le tableau ci-après.
-..  Toujours dans "_Informations du projet → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
+..  Toujours dans "_Informations du projet → Membres_", ajoutez l'autre membre de votre binôme de projet, avec le statut "_Maintainer_".
 
 
 [cols="2,3,3"]
@@ -393,13 +393,13 @@ WARNING: Vous serez évalués sur la qualité du code que vous aurez produit.
 
 Il est demandé que votre développement soit entièrement versionné à l'aide de Gitlab et git.
 Vous devez enregistrer tous les changements que vous réalisez à l'aide de _commits_ et de _pushs_ sur votre référentiel distant, en choisissant à chaque fois des messages de commit appropriés.
-Vous devez également utiliser git pour collaborer à plusieurs sur votre projet, en partageant le même référentiel distant auprès de tous les membres du groupe.
+Vous devez également utiliser git pour collaborer à plusieurs sur votre projet, en partageant le même référentiel distant auprès des deux membres du binôme.
 
 *Conseil* : effectuez des _commits_ et des _pushs_ régulièrement ! Cela vous permet d'éviter de perdre votre travail, et de mieux collaborer en équipe.
 
 
 
-WARNING: Vous serez évalués sur votre usage de git, que ce soit la qualité des messages de _commit_, la fréquence des commits, et l'équilibre de la répartition des _commits_ entre les différents membres du groupe.
+WARNING: Vous serez évalués sur votre usage de git, que ce soit la qualité des messages de _commit_, la fréquence des commits, et l'équilibre de la répartition des _commits_ entre les membres du binôme.
 
 === Rendre votre travail
 
