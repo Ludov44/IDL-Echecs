@@ -35,12 +35,12 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 284I: GA
 |284I
 |`idl_projet_2022-2023_284I`
-|_À venir_
+| image:img/ardourel-clone.png[]
 
 // 284J: GS
 |284J
 |`idl_projet_2022-2023_284J`
-|_À venir_
+| image:img/sunye-g-clone.png[]
 
 // 285K: JE
 |285K
