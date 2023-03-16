@@ -36,17 +36,17 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 284I: GA
 |284I
 |`idl_projet_2022-2023_284I`
-| image:img/ardourel-clone.png[role="img-thumbnail", width=242]
+| image:img/ardourel-clone.png[width=242]
 
 // 284J: GS
 |284J
 |`idl_projet_2022-2023_284J`
-| image:img/sunye-g-clone.png[role="img-thumbnail", width=242]
+| image:img/sunye-g-clone.png[width=242]
 
 // 285K: JE
 |285K
 |`idl_projet_2022-2023_285K`
-|_À venir_
+| image:img/josselin-enet-clone.png[width=242]
 
 // 285L: DJ
 |285L
@@ -56,27 +56,27 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 286M-288R : EL
 |286M-288R
 |`idl_projet_2022-2023_286M-288R`
-| image:img/languenou-clone.png[role="img-thumbnail", width=242]
+| image:img/languenou-clone.png[width=242]
 
 // 286N: JE
 |286N
 |`idl_projet_2022-2023_286N`
-|_À venir_
+| image:img/josselin-enet-clone.png[width=242]
 
 // 287O: EB
 |287O
 |`idl_projet_2022-2023_287O`
-| image:img/bousse-e-clone.png[role="img-thumbnail", width=242]
+| image:img/bousse-e-clone.png[width=242]
 
 // 287P: EL
 |287P
 |`idl_projet_2022-2023_287P`
-| image:img/languenou-clone.png[role="img-thumbnail", width=242]
+| image:img/languenou-clone.png[width=242]
 
 // 288Q: JE
 |288Q
 |`idl_projet_2022-2023_288Q`
-|_À venir_
+| image:img/josselin-enet-clone.png[width=242]
 
 
 
