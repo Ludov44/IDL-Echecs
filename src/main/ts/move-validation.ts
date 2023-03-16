@@ -15,19 +15,19 @@ import { equals, left, right, top, bottom } from './position';
  * @param move
  */
 export function blackPawnMove(board: Chessboard, move: Move): boolean {
-    if (equals(move.to!, bottom(move.from!))) {
+    if (equals(move.to, bottom(move.from))) {
         //console.log("Single forward");
-        return isEmpty(board, move.to!);
+        return isEmpty(board, move.to);
     }
 
-    if (move.from!.rank == 6 && equals(move.to!, bottom(bottom(move.from!)))) {
+    if (move.from.rank == 6 && equals(move.to, bottom(bottom(move.from)))) {
         //console.log("Double forward");
-        return isEmpty(board, bottom(move.from!)) && isEmpty(board, move.to!);
+        return isEmpty(board, bottom(move.from)) && isEmpty(board, move.to);
     }
 
-    if (equals(move.to!, left(bottom(move.from!))) || equals(move.to!, right(bottom(move.from!)))) {
-        const destination: Square = squareAtPosition(board, move.to!);
-        return !(destination.isEmpty || !destination.piece!.isWhite);
+    if (equals(move.to, left(bottom(move.from))) || equals(move.to, right(bottom(move.from)))) {
+        const destination: Square = squareAtPosition(board, move.to);
+        return (destination.isEmpty || destination.piece.isWhite);
     }
 
     return false;
@@ -45,17 +45,17 @@ export function blackPawnMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function whitePawnMove(board: Chessboard, move: Move): boolean {
-    if (equals(move.to!, top(move.from!))) {
-        return isEmpty(board, move.to!);
+    if (equals(move.to, top(move.from))) {
+        return isEmpty(board, move.to);
     }
 
-    if (move.from!.rank == 1 && equals(move.to!, top(top(move.from!)))) {
-        return isEmpty(board, top(move.from!)) && isEmpty(board, move.to!);
+    if (move.from.rank == 1 && equals(move.to, top(top(move.from)))) {
+        return isEmpty(board, top(move.from)) && isEmpty(board, move.to);
     }
 
-    if (equals(move.to!, left(top(move.from!))) || equals(move.to!, right(top(move.from!)))) {
-        const destination: Square = squareAtPosition(board, move.to!);
-        return !(destination.isEmpty || destination.piece!.isWhite);
+    if (equals(move.to, left(top(move.from))) || equals(move.to, right(top(move.from)))) {
+        const destination: Square = squareAtPosition(board, move.to);
+        return (destination.isEmpty || destination.piece.isWhite);
     }
 
     return false;
