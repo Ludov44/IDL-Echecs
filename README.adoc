@@ -151,8 +151,9 @@ Il est possible que les enseignants aient laissé quelques coquilles dans le pro
 *Seulement si un enseignant vous le demande*, vous pourrez récupérer les corrections des coquilles à l'aide des commandes suivantes :
 
 ```sh
-git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023.git # pas besoin si déjà fait
+git remote add upstream https://gitlab.univ-nantes.fr/naomod/idl/projet-2022-2023.git # pas besoin si déjà fait une première fois sur votre machine
 git pull upstream master
+git push
 ```
 
 * La première ligne ajoute à votre référentiel local un lien vers le dépôt originel et le nomme `upstream`.
