@@ -80,10 +80,10 @@ export function parseMoveString(movementString: string): Move {
  * @param move 
  */
 function isMovePossible(chessboard : Chessboard, move : Move): boolean {
-    const square: Square = squareAtPosition(chessboard, move.from!);
+    const square: Square = squareAtPosition(chessboard, move.from);
     if (square.isEmpty) { return false;}
 
-    const piece : Piece = square.piece!;
+    const piece : Piece = square.piece;
 
     switch(piece) {
         case pieces.whitePawn  : return isPossible.whitePawnMove(chessboard, move);
@@ -104,8 +104,8 @@ function isMovePossible(chessboard : Chessboard, move : Move): boolean {
 }
 
 function performMove(board : Chessboard, move : Move) {
-    const source      : Square = squareAtPosition(board, move.from!);
-    const destination : Square = squareAtPosition(board, move.to!);
+    const source      : Square = squareAtPosition(board, move.from);
+    const destination : Square = squareAtPosition(board, move.to);
 
     destination.piece = source.piece;
     destination.isEmpty = false;
