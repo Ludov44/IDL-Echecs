@@ -35,12 +35,12 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 284I: GA
 |284I
 |`idl_projet_2022-2023_284I`
-| image:img/ardourel-clone.png[]
+| image:img/ardourel-clone.png[width=242]
 
 // 284J: GS
 |284J
 |`idl_projet_2022-2023_284J`
-| image:img/sunye-g-clone.png[]
+| image:img/sunye-g-clone.png[width=242]
 
 // 285K: JE
 |285K
@@ -65,7 +65,7 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 287O: EB
 |287O
 |`idl_projet_2022-2023_287O`
-| image:img/bousse-e-clone.png[]
+| image:img/bousse-e-clone.png[width=242]
 
 // 287P: EL
 |287P
