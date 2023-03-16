@@ -25,7 +25,7 @@ Ainsi, vous devenez le seul utilisateur autorisé à accéder à votre code sour
 NOTE: Cette étape est très importante car elle nous permet de retrouver vos projets sur le Gitlab.
 ..  Dans "_Informations du projet → Membres_", donnez accès à votre projet à votre enseignant de TP, avec le statut "_Reporter_".
 Pour savoir quel compte ajouter, consultez le tableau ci-après.
-..  Toujours dans "_Paramètres → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
+..  Toujours dans "_Informations du projet → Membres_", ajoutez les autres membres de votre groupe de projet, avec le statut "_Maintainer_".
 
 
 [cols="2,3,3"]
