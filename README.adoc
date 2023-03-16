@@ -235,7 +235,7 @@ L'objectif principal de votre travail est d'écrire le code nécessaire pour vé
 Dans le projet que vous avez récupéré, ce travail a été commencé, mais pour le moment *seuls les déplacements des pions sont vérifiés*.
 Vous devez mettre en oeuvre la validation des déplacements des autres pièces: le Roi, la Dame, le Cavalier, le Fou et la Tour. 
 
-NOTE: Il n'est *pas* demandé d'implémenter les mouvements spéciaux, comme le _roque_ ou la _prise en passant_.
+NOTE: Il n'est *pas* demandé d'implémenter les mouvements spéciaux — comme le _roque_ ou la _prise en passant_ — et il n'est *pas* demandé de prendre en compte les situations où le roi est "en échec" (qui peut empêcher ou forcer un déplacement du roi).
 
 En interne, le traitement des déplacements se fait de la façon suivante:
 
