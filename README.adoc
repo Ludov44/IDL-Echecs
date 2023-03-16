@@ -1,12 +1,13 @@
 :sectnums:
 :toc:
 
-Ce projet consiste à développer une application web de jeu d'échecs (à peu près) jouable en multijoueur.
 
-== Objectifs
+== Introduction
 
 La fin du semestre approche, il est temps de montrer tout ce que vous avez appris et de proposer au monde entier votre première application web (webapp) !
 L'objectif de ce mini-projet est d'utiliser toutes les compétences acquises lors des TP et TD précédents, afin de réaliser une application de jeu d'échecs à peu près jouable (et observable) en multijoueur réseau.
+
+WARNING: *Ce projet est à réaliser obligatoirement par groupe de deux* ! Les groupes de trois ne sont autorisés que dans le cas d'un nombre d'étudiants impair. 
 
 
 == Préparation
