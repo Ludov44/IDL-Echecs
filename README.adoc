@@ -51,7 +51,7 @@ Pour savoir quel compte ajouter, consultez le tableau ci-après.
 // 285L: DJ
 |285L
 |`idl_projet_2022-2023_285L`
-|_À venir_
+| image:img/djulien.png[width=242]
 
 // 286M-288R : EL
 |286M-288R
