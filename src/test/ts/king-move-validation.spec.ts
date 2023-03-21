@@ -13,12 +13,17 @@ export class TestKingMoves {
         // TODO:
         // Initialize an empty chessboard
         // Place a black King on E4
+        chessboard = createEmptyChessboard();
+        putPiece(chessboard, positions.E4, pieces.blackKing);
     }
 
     @Test('A King can move 1 square in all directions')
     testCanMoveOneSquare() {
         // TODO:
         // Check it can move to squares D3, D4, D5, E3, E5, F3, F4, and F5
+        const singleBackward: Move = { from: positions.E4, to: positions.E3 };
+        Expect(isPossible.blackPawnMove(chessboard, singleBackward)).toBeTruthy();
+        
     }
 
     @Test('A King cannot move more than 1 square')
