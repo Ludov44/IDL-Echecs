@@ -108,7 +108,7 @@ export function rookMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function bishopMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
+    
     return true;
 }
 
@@ -125,5 +125,33 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
  */
 export function knightMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
-    return true;
+    const isDestinationWhite: boolean = squareAtPosition(board, move.to).piece.isWhite;
+    const isPosDepartWhite: boolean = squareAtPosition(board, move.from).piece.isWhite;
+    const isDeplacementPossible : boolean = (isEmpty(board, move.to) || isDestinationWhite != isPosDepartWhite);
+
+    if (equals(move.to, top(top(left(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, top(top(right(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, left(left(top(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, left(left(bottom(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, right(right(bottom(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, right(right(top(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, bottom(bottom(left(move.from))))) {
+        return isDeplacementPossible;
+    }
+    if (equals(move.to, bottom(bottom(right(move.from))))) {
+        return isDeplacementPossible;
+    }
+    return false;
 }
