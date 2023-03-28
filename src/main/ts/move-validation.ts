@@ -118,6 +118,8 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  */
 export function queenMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
     return true;
 }
 
@@ -131,6 +133,8 @@ export function queenMove(board: Chessboard, move: Move): boolean {
  */
 export function rookMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
     return true;
 }
 
@@ -143,7 +147,9 @@ export function rookMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function bishopMove(board: Chessboard, move: Move): boolean {
-    
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
+
     return true;
 }
 
@@ -161,33 +167,32 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
 export function knightMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     
-    
-    if(isMovePossible(board, move)) return false;
-
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
 
     if (equals(move.to, top(top(left(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, top(top(right(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, left(left(top(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, left(left(bottom(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, right(right(bottom(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, right(right(top(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, bottom(bottom(left(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     if (equals(move.to, bottom(bottom(right(move.from))))) {
-        return isDeplacementPossible;
+        return movePossible;
     }
     return false;
 }
