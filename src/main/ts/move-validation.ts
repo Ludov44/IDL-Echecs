@@ -2,6 +2,17 @@ import { Chessboard, isEmpty, Square, squareAtPosition } from './chessboard';
 import { Move } from './movements';
 import { equals, left, right, top, bottom } from './position';
 
+
+
+function isMovePossible(board: Chessboard, move: Move): boolean{
+    let isDestinationWhite: boolean = squareAtPosition(board, move.to).piece.isWhite;
+    let isPosDepartWhite: boolean = squareAtPosition(board, move.from).piece.isWhite;
+    return(isEmpty(board, move.to) || isDestinationWhite != isPosDepartWhite);
+}
+
+
+
+
 /**
  * Checks whether a Black Pawn can perform a given move.
  * A pawn can move forward to the unoccupied square immediately in front of
@@ -149,9 +160,10 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
  */
 export function knightMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
-    const isDestinationWhite: boolean = squareAtPosition(board, move.to).piece.isWhite;
-    const isPosDepartWhite: boolean = squareAtPosition(board, move.from).piece.isWhite;
-    const isDeplacementPossible : boolean = (isEmpty(board, move.to) || isDestinationWhite != isPosDepartWhite);
+    
+    
+    if(isMovePossible(board, move)) return false;
+
 
     if (equals(move.to, top(top(left(move.from))))) {
         return isDeplacementPossible;
