@@ -80,30 +80,33 @@ export function whitePawnMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function kingMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
+
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
+    
     if (equals(move.to, top(move.from))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, top(left(move.from)))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, top(right(move.from)))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, right(move.from))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, left(move.from))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, bottom(move.from))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, bottom(left(move.from)))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     if (equals(move.to, bottom(right(move.from)))) {
-        return isEmpty(board, move.to);
+        return movePossible;
     }
     return false;
 }
