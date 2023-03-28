@@ -3,6 +3,13 @@ import { Move } from './movements';
 import { equals, left, right, top, bottom } from './position';
 
 
+/**
+ * Checks whether the color of the depart position and the color of the piece 
+ * at destination matches to capture it or if the square is empty.
+ * @param board The chessboard of the current game
+ * @param move The move to check
+ * @returns The validity of the move
+ */
 
 function isMovePossible(board: Chessboard, move: Move): boolean{
     let isDestinationWhite: boolean = squareAtPosition(board, move.to).piece.isWhite;
@@ -120,7 +127,7 @@ export function queenMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
-    return true;
+    return false;
 }
 
 /**
@@ -135,7 +142,7 @@ export function rookMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
-    return true;
+    return false;
 }
 
 /**
@@ -150,7 +157,7 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
 
-    return true;
+    return false;
 }
 
 /**
