@@ -133,36 +133,30 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
     let rankDifference : number = move.to.rank - move.from.rank;
     let fileDifference : number = move.to.file - move.from.file;
-    if(rankDifference > 0){
-        let moveInc = move;
-        moveInc.to.rank = moveInc.from.rank;
-        for(let i : number = 1; i <= rankDifference ; i++){
-                moveInc.to.rank = moveInc.to.rank + i;
-                if (!isEmpty(board, moveInc.to)) movePossible = false;
+    let endingPos : Position = move.from;
+
+    if(rankDifference > 0 && fileDifference == 0){
+        for(let i : number = 1; i < rankDifference ; i++){
+                endingPos.rank = move.from.rank + i;
+                if (!isEmpty(board, endingPos)) return false;
         }
     }
-    if(rankDifference < 0){
-        let moveInc = move;
-        moveInc.to.rank = moveInc.from.rank;
-        for(let i : number = -1; i >= rankDifference ; i--){
-                moveInc.to.rank = moveInc.to.rank + i;
-                if (!isEmpty(board, moveInc.to)) movePossible = false;
+    if(rankDifference < 0 && fileDifference == 0){
+        for(let i : number = -1; i > rankDifference ; i--){
+                endingPos.rank = move.from.rank + i;
+                if (!isEmpty(board, endingPos)) return false;
         }
     }
-    if(fileDifference > 0){
-        let moveInc = move;
-        moveInc.to.file = moveInc.from.file;
-        for(let i : number = 1; i <= fileDifference ; i++){
-                moveInc.to.file = moveInc.to.file + i;
-                if (!isEmpty(board, moveInc.to)) movePossible = false;
+    if(fileDifference > 0 && rankDifference == 0){
+        for(let i : number = 1; i < fileDifference ; i++){
+                endingPos.file = move.from.file + i;
+                if (!isEmpty(board, endingPos)) return false;
         }
     }
-    if(fileDifference < 0){
-        let moveInc = move;
-        moveInc.to.file = moveInc.from.file;
-        for(let i : number = -1; i >= fileDifference ; i--){
-                moveInc.to.file = moveInc.to.file + i;
-                if (!isEmpty(board, moveInc.to)) movePossible = false;
+    if(fileDifference < 0 && rankDifference == 0){
+        for(let i : number = -1; i > fileDifference ; i--){
+                endingPos.file = move.from.file + i;
+                if (!isEmpty(board, endingPos)) return false;
         }
     }
 

@@ -10,55 +10,76 @@ let chessboard: Chessboard;
 export class TestRookMoves {
     @Setup
     beforeEach() {
-        // TODO:
-        // Initialize an empty chessboard
-        // Place a white Rook on E4
+        chessboard = createEmptyChessboard();
+        putPiece(chessboard, positions.E4, pieces.whiteRook);
     }
 
     @Test('An Rook can move horizontally')
     testCanMoveHorizontally() {
-        // TODO:
-        // Check the following moves are possible: moveE4_H4, moveE4_A4
+        const e4ToH4: Move = { from: positions.E4, to: positions.H4 };
+        const e4TOA4: Move = { from: positions.E4, to: positions.A4 };
+    
+        Expect(isPossible.rookMove(chessboard, e4ToH4)).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, e4TOA4)).toBeTruthy();
     }
 
     @Test('A Rook can move vertically')
     testCanMoveVertically() {
-        // TODO:
-        // Check the following moves are possible: moveE4_E1, moveE4_E8
+        const e4ToE1: Move = { from: positions.E4, to: positions.E1 };
+        const e4TOE8: Move = { from: positions.E4, to: positions.E8 };
+    
+        Expect(isPossible.rookMove(chessboard, e4ToE1)).toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, e4TOE8)).toBeTruthy();
     }
 
     @Test('A Rook cannot move diagonally')
     testCannotMoveDiagonally() {
-        // TODO:
-        // Check the following moves are impossible:
-        // moveE4_A8, moveE4_B1, moveE4_H7, moveE4_H1
+        const e4ToA8: Move = { from: positions.E4, to:positions.A8};
+        const e4ToB1: Move = { from: positions.E4, to:positions.B1};
+        const e4ToH7: Move = { from: positions.E4, to:positions.H7};
+        const e4ToH1: Move = { from: positions.E4, to:positions.H1};
+
+        Expect(isPossible.rookMove(chessboard, e4ToA8)).not.toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, e4ToB1)).not.toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, e4ToH7)).not.toBeTruthy();
+        Expect(isPossible.rookMove(chessboard, e4ToH1)).not.toBeTruthy();
     }
 
     @Test('A Rook can capture a piece from different color')
     testCanCaptureDifferentColor() {
-        // TODO:
-        // Place a black Pawn on H4
-        // Check the move moveE4_H4 is possible
+        putPiece(chessboard, positions.H4, pieces.blackKnight);
+        const e4ToH4: Move = { from : positions.E4, to:positions.H4};
+        Expect(isPossible.rookMove(chessboard, e4ToH4)).toBeTruthy();
     }
 
     @Test('A Rook cannot capture a piece from the same color')
     testCannotCaptureSameColor() {
-        // TODO:
-        // Place a white Pawn on H4
-        // Check the move moveE4_H4 is impossible
+        putPiece(chessboard, positions.H4, pieces.whiteKnight);
+        const e4ToH4: Move = { from : positions.E4, to:positions.H4};
+        Expect(isPossible.rookMove(chessboard, e4ToH4)).not.toBeTruthy();
     }
 
     @Test('A Rook cannot leap other pieces, when moving horizontally')
     testCannotLeapHorizontally() {
-        // TODO:
-        // Place a black Pawn on F4
-        // Check the move moveE4_H4 is impossible
+        //check right movement
+        putPiece(chessboard, positions.F4, pieces.blackPawn);
+        const e4ToH4: Move = { from : positions.E4, to:positions.H4};
+        Expect(isPossible.rookMove(chessboard, e4ToH4)).not.toBeTruthy();
+        //check left movement
+        putPiece(chessboard, positions.C4, pieces.blackPawn);
+        const e4ToA4: Move = { from : positions.E4, to:positions.A4};
+        Expect(isPossible.rookMove(chessboard, e4ToA4)).not.toBeTruthy();
     }
 
     @Test('A Rook cannot leap other pieces, when moving vertically')
     testCannotLeapvertically() {
-        // TODO:
-        // Place a black Pawn on E3
-        // Check the move moveE4_E1 is impossible
+        //check top movement
+        putPiece(chessboard, positions.E3, pieces.blackPawn);
+        const e4ToE1: Move = { from : positions.E4, to:positions.E1};
+        Expect(isPossible.rookMove(chessboard, e4ToE1)).not.toBeTruthy();
+        //check bottom movement
+        putPiece(chessboard, positions.E6, pieces.blackPawn);
+        const e4ToE8: Move = { from : positions.E4, to:positions.A4};
+        Expect(isPossible.rookMove(chessboard, e4ToE8)).not.toBeTruthy();
     }
 }
