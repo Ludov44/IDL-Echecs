@@ -1,6 +1,6 @@
 import { Chessboard, isEmpty, Square, squareAtPosition } from './chessboard';
 import { Move } from './movements';
-import { equals, left, right, top, bottom } from './position';
+import { equals, left, right, top, bottom, Position } from './position';
 
 
 /**
@@ -119,21 +119,6 @@ export function kingMove(board: Chessboard, move: Move): boolean {
 }
 
 /**
- * Checks whether a Queen can perform a given move.
- * The queen combines the power of a rook and bishop and can move any
- * number of squares along a rank, file, or diagonal, but cannot leap over other pieces.
- *
- * @param board The chessboard of the current game
- * @param move
- */
-export function queenMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
-    let movePossible : boolean = isMovePossible(board, move);
-    if(!movePossible) return false;
-    return false;
-}
-
-/**
  * Checks whether a Rook can perform a given move.
  * An Rook can move any number of squares along a rank or file,
  * but cannot leap over other pieces.
@@ -145,7 +130,43 @@ export function rookMove(board: Chessboard, move: Move): boolean {
     // #TODO: Implement this function
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
-    return false;
+
+    let rankDifference : number = move.to.rank - move.from.rank;
+    let fileDifference : number = move.to.file - move.from.file;
+    if(rankDifference > 0){
+        let moveInc = move;
+        moveInc.to.rank = moveInc.from.rank;
+        for(let i : number = 1; i <= rankDifference ; i++){
+                moveInc.to.rank = moveInc.to.rank + i;
+                if (!isEmpty(board, moveInc.to)) movePossible = false;
+        }
+    }
+    if(rankDifference < 0){
+        let moveInc = move;
+        moveInc.to.rank = moveInc.from.rank;
+        for(let i : number = -1; i >= rankDifference ; i--){
+                moveInc.to.rank = moveInc.to.rank + i;
+                if (!isEmpty(board, moveInc.to)) movePossible = false;
+        }
+    }
+    if(fileDifference > 0){
+        let moveInc = move;
+        moveInc.to.file = moveInc.from.file;
+        for(let i : number = 1; i <= fileDifference ; i++){
+                moveInc.to.file = moveInc.to.file + i;
+                if (!isEmpty(board, moveInc.to)) movePossible = false;
+        }
+    }
+    if(fileDifference < 0){
+        let moveInc = move;
+        moveInc.to.file = moveInc.from.file;
+        for(let i : number = -1; i >= fileDifference ; i--){
+                moveInc.to.file = moveInc.to.file + i;
+                if (!isEmpty(board, moveInc.to)) movePossible = false;
+        }
+    }
+
+    return movePossible;
 }
 
 /**
@@ -204,5 +225,24 @@ export function knightMove(board: Chessboard, move: Move): boolean {
     if (equals(move.to, bottom(bottom(right(move.from))))) {
         return movePossible;
     }
+    return false;
+}
+
+
+/**
+ * Checks whether a Queen can perform a given move.
+ * The queen combines the power of a rook and bishop and can move any
+ * number of squares along a rank, file, or diagonal, but cannot leap over other pieces.
+ *
+ * @param board The chessboard of the current game
+ * @param move
+ */
+export function queenMove(board: Chessboard, move: Move): boolean {
+    // #TODO: Implement this function
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
+
+    if((rookMove(board, move))||(bishopMove(board,move))) return true;
+    
     return false;
 }
