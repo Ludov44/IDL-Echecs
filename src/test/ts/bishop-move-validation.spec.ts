@@ -10,9 +10,8 @@ let chessboard: Chessboard;
 export class TestBishopMoves {
     @Setup
     beforeEach() {
-        // TODO:
-        // Initialize an empty chessboard
-        // Place a black Bishop on E4
+        chessboard = createEmptyChessboard();
+        putPiece(chessboard, positions.E4, pieces.blackBishop);
     }
 
     @Test('A Bishop can move diagonally')
@@ -20,6 +19,7 @@ export class TestBishopMoves {
         // TODO:
         // Check the following moves are possible:
         // moveE4_A8, moveE4_B1, moveE4_H7, moveE4_H1
+        
     }
 
     @Test('A Bishop cannot move horizontally')
