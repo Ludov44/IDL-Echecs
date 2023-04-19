@@ -42,8 +42,6 @@ export class TestKingMoves {
    
     @Test('A King cannot move more than 1 square')
     testCannotMoveMoreThanOneSquare() {
-        // TODO:
-        // Check it cannot move to squares C2, C3, C4, C6, E2, E6, G2, G4, and G6
         const e4ToC2: Move = { from: positions.E4, to: positions.C2};
         const e4ToC3: Move = { from: positions.E4, to: positions.C3};
         const e4ToC4: Move = { from: positions.E4, to: positions.C4};
@@ -67,9 +65,6 @@ export class TestKingMoves {
 
     @Test('A King cannot capure pieces from the same color')
     testCannotCaptureSameColor() {
-        // TODO:
-        // Place a black Pawn on E5
-        // Check the King cannot move to E5.
         putPiece(chessboard, positions.E5, pieces.blackPawn);
         const singleForward: Move = { from: positions.E4, to: positions.E5};
 
@@ -78,9 +73,6 @@ export class TestKingMoves {
 
     @Test('A King can capure pieces from a different color')
     testCanCaptureSameColor() {
-        // TODO:
-        // Place a white Pawn on E5
-        // Check the King can move to E5.
 
         putPiece(chessboard, positions.E5, pieces.whitePawn);
         const singleForward: Move = { from: positions.E4, to: positions.E5};

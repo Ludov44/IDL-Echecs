@@ -16,42 +16,51 @@ export class TestBishopMoves {
 
     @Test('A Bishop can move diagonally')
     testCanMoveDiagonally() {
-        // TODO:
-        // Check the following moves are possible:
-        // moveE4_A8, moveE4_B1, moveE4_H7, moveE4_H1
-        
+        const e4ToA8: Move = { from: positions.E4, to: positions.A8};
+        const e4ToB1: Move = { from: positions.E4, to: positions.B1};
+        const e4ToH7: Move = { from: positions.E4, to: positions.H7};
+        const e4To1H1: Move = { from: positions.E4, to: positions.H1};
+        Expect(isPossible.bishopMove(chessboard, e4ToA8)).toBeTruthy();
+        Expect(isPossible.bishopMove(chessboard, e4ToB1)).toBeTruthy();
+        Expect(isPossible.bishopMove(chessboard, e4ToH7)).toBeTruthy();
+        Expect(isPossible.bishopMove(chessboard, e4To1H1)).toBeTruthy();
     }
 
     @Test('A Bishop cannot move horizontally')
     testCannotMoveHorizontally() {
-        // TODO:
-        // Check the following moves are impossible: moveE4_H4, moveE4_A4
+        const e4ToA3: Move = { from: positions.E4, to: positions.H4};
+        const e4ToA4: Move = { from: positions.E4, to: positions.A4};
+        Expect(isPossible.bishopMove(chessboard, e4ToA3)).not.toBeTruthy();
+        Expect(isPossible.bishopMove(chessboard, e4ToA4)).not.toBeTruthy();
     }
 
     @Test('A Bishop cannot move vertically')
     testCannotMoveVertically() {
-        // TODO:
-        // Check the following moves are impossible: moveE4_E1, moveE4_E8
+        const e4ToE1: Move = { from: positions.E4, to: positions.E1};
+        const e4ToE8: Move = { from: positions.E4, to: positions.E8};
+        Expect(isPossible.bishopMove(chessboard, e4ToE1)).not.toBeTruthy();
+        Expect(isPossible.bishopMove(chessboard, e4ToE8)).not.toBeTruthy();
     }
 
     @Test('A Bishop can capture a piece from another color')
     testCanCaptureDifferentColor() {
-        // TODO:
-        // Place a white Pawn on A8
-        // Check the move moveE4_A8 is possible
+        putPiece(chessboard, positions.A8, pieces.whitePawn);
+
+        const e4ToA8: Move = { from: positions.E4, to: positions.E8};
+        Expect(isPossible.bishopMove(chessboard, e4ToA8)).toBeTruthy();
     }
 
     @Test('A Bishop cannot capture a piece from the same color')
     testCannotCaptureSameColor() {
-        // TODO:
-        // Place a black Pawn on A8
-        // Check the move moveE4_A8 is impossible
+        putPiece(chessboard, positions.A8, pieces.blackPawn);
+        const e4ToA8: Move = { from: positions.E4, to: positions.E8};
+        Expect(isPossible.bishopMove(chessboard, e4ToA8)).not.toBeTruthy();
     }
 
     @Test('A Bishop cannot leap other pieces')
     testCannotLeapDiagonally() {
-        // TODO:
-        // Place a white Pawn on C6
-        // Check the move moveE4_A8 is impossible
+        putPiece(chessboard, positions.C6, pieces.whitePawn);
+        const e4ToA8: Move = { from: positions.E4, to: positions.E8};
+        Expect(isPossible.bishopMove(chessboard, e4ToA8)).not.toBeTruthy();
     }
 }
