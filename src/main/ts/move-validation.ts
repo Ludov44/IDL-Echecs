@@ -183,34 +183,34 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
     }
     if(rankDifference < 0 && fileDifference < 0){
         let moveToCheck : Position = move.from;
-        for(let i = 1; i < move.from.rank; i++){
-            moveToCheck.rank = move.from.rank + i;
-            moveToCheck.file = move.from.file - i;
+        for(let i = 1; i <= Math.abs(rankDifference); i++){
             if(!isEmpty(board, moveToCheck)) return false;
+            moveToCheck.rank = move.from.rank - i;
+            moveToCheck.file = move.from.file - i;
         }
     }
     if(rankDifference > 0 && fileDifference < 0){
         let moveToCheck : Position = move.from;
-        for(let i = 1; i > move.from.rank; i--){
-            moveToCheck.rank = move.from.rank - i;
-            moveToCheck.file = move.from.file - i;
+        for(let i = 1; i <= Math.abs(rankDifference); i++){
             if(!isEmpty(board, moveToCheck)) return false;
+            moveToCheck.rank = move.from.rank + i;
+            moveToCheck.file = move.from.file - i;
         }
     }
     if(rankDifference < 0 && fileDifference > 0){
         let moveToCheck : Position = move.from;
-        for(let i = 1; i < move.from.rank; i++){
+        for(let i = 1; i <= Math.abs(rankDifference); i++){
+            if(!isEmpty(board, moveToCheck)) return false;
             moveToCheck.rank = move.from.rank - i;
             moveToCheck.file = move.from.file + i;
-            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     if(rankDifference > 0 && fileDifference > 0){
         let moveToCheck : Position = move.from;
-        for(let i = 1; i > move.from.rank; i--){
+        for(let i = 1; i <= Math.abs(rankDifference); i++){
+            if(!isEmpty(board, moveToCheck)) return false;
             moveToCheck.rank = move.from.rank + i;
             moveToCheck.file = move.from.file + i;
-            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     return movePossible;
