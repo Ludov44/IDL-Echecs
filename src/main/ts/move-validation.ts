@@ -133,30 +133,34 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
     let rankDifference : number = move.to.rank - move.from.rank;
     let fileDifference : number = move.to.file - move.from.file;
-    let endingPos : Position = move.from;
+    let endingPosition : Position = move.from;
+    //fast return if movement is not a line
+    if((move.to.rank != move.from.rank) && (move.to.file != move.from.file)){
+        return false;
+    }
 
-    if(rankDifference > 0 && fileDifference == 0){
-        for(let i : number = 1; i < rankDifference ; i++){
-                endingPos.rank = move.from.rank + i;
-                if (!isEmpty(board, endingPos)) return false;
+    if(rankDifference > 0){ //top movement
+        for(let i : number = 1; i < rankDifference; i++){
+            endingPosition.rank = move.from.rank + i;
+            if(!isEmpty(board, endingPosition)) return false;
         }
     }
-    if(rankDifference < 0 && fileDifference == 0){
-        for(let i : number = -1; i > rankDifference ; i--){
-                endingPos.rank = move.from.rank + i;
-                if (!isEmpty(board, endingPos)) return false;
+    if(rankDifference < 0){ // bottom movement
+        for(let i : number = 1; i < rankDifference; i++){
+            endingPosition.rank = move.from.rank - i;
+            if(!isEmpty(board, endingPosition)) return false;
         }
     }
-    if(fileDifference > 0 && rankDifference == 0){
-        for(let i : number = 1; i < fileDifference ; i++){
-                endingPos.file = move.from.file + i;
-                if (!isEmpty(board, endingPos)) return false;
+    if(fileDifference > 0 ){ //right movement
+        for(let i : number = 1; i < fileDifference; i++){
+            endingPosition.file = move.from.file + i;
+            if(!isEmpty(board, endingPosition)) return false;
         }
     }
-    if(fileDifference < 0 && rankDifference == 0){
-        for(let i : number = -1; i > fileDifference ; i--){
-                endingPos.file = move.from.file + i;
-                if (!isEmpty(board, endingPos)) return false;
+    if(fileDifference < 0 ){ //right movement
+        for(let i : number = 1; i < fileDifference; i++){
+            endingPosition.file = move.from.file - i;
+            if(!isEmpty(board, endingPosition)) return false;
         }
     }
 
