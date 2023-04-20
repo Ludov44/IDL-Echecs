@@ -133,34 +133,43 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
     let rankDifference : number = move.to.rank - move.from.rank;
     let fileDifference : number = move.to.file - move.from.file;
-    let endingPosition : Position = move.from;
+    let posIntermediaire : Position = move.from;
+
     //fast return if movement is not a line
-    if((move.to.rank != move.from.rank) && (move.to.file != move.from.file)){
+    if((rankDifference != 0) && (fileDifference != 0)){
         return false;
     }
 
     if(rankDifference > 0){ //top movement
         for(let i : number = 1; i < rankDifference; i++){
-            endingPosition.rank = move.from.rank + i;
-            if(!isEmpty(board, endingPosition)) return false;
+            posIntermediaire.rank++;
+            if(!isEmpty(board, posIntermediaire)){
+                return false;
+            }
         }
     }
-    if(rankDifference < 0){ // bottom movement
-        for(let i : number = 1; i < rankDifference; i++){
-            endingPosition.rank = move.from.rank - i;
-            if(!isEmpty(board, endingPosition)) return false;
+    if(rankDifference < 0){ //bottom movement
+        for(let i : number = 1; i < Math.abs(rankDifference); i++){
+            posIntermediaire.rank--;
+            if(!isEmpty(board, posIntermediaire)){
+                return false;
+            }
         }
     }
-    if(fileDifference > 0 ){ //right movement
+    if(fileDifference > 0){ //right movement
         for(let i : number = 1; i < fileDifference; i++){
-            endingPosition.file = move.from.file + i;
-            if(!isEmpty(board, endingPosition)) return false;
+            posIntermediaire.file++;
+            if(!isEmpty(board, posIntermediaire)){
+                return false;
+            }
         }
     }
-    if(fileDifference < 0 ){ //right movement
-        for(let i : number = 1; i < fileDifference; i++){
-            endingPosition.file = move.from.file - i;
-            if(!isEmpty(board, endingPosition)) return false;
+    if(fileDifference < 0){ //left movement
+        for(let i : number = 1; i < Math.abs(fileDifference); i++){
+            posIntermediaire.file--;
+            if(!isEmpty(board, posIntermediaire)){
+                return false;
+            }
         }
     }
 
