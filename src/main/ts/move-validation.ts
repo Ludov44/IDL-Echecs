@@ -17,7 +17,12 @@ function isMovePossible(board: Chessboard, move: Move): boolean{
     return(isEmpty(board, move.to) || isDestinationWhite != isPosDepartWhite);
 }
 
-
+function rankSubstract(move : Move) : number{
+    return move.to.rank - move.from.rank;    
+}
+function fileSubstract(move : Move) : number{
+    return move.to.file - move.from.file;    
+}
 
 
 /**
@@ -90,6 +95,21 @@ export function kingMove(board: Chessboard, move: Move): boolean {
 
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
+
+    let rankDifference : number = Math.abs(rankSubstract(move));
+    let fileDifference : number = Math.abs(fileSubstract(move));
+
+
+    //exclude moves where the range above one on file and rank
+    if((rankDifference > 1) || (fileDifference > 1)){
+        return false;
+    }
+
+    return true;
+
+    /*
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
     
     if (equals(move.to, top(move.from))) {
         return movePossible;
@@ -116,6 +136,7 @@ export function kingMove(board: Chessboard, move: Move): boolean {
         return movePossible;
     }
     return false;
+    */
 }
 
 /**
@@ -127,15 +148,16 @@ export function kingMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function rookMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
+   
+    
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
 
-    let rankDifference : number = move.to.rank - move.from.rank;
-    let fileDifference : number = move.to.file - move.from.file;
+    let rankDifference : number = rankSubstract(move);
+    let fileDifference : number = fileSubstract(move);
     let posIntermediaire : Position = move.from;
 
-    //fast return if movement is not a line
+    //check if move is a line
     if((rankDifference != 0) && (fileDifference != 0)){
         return false;
     }
@@ -241,8 +263,27 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function knightMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
     
+    let movePossible : boolean = isMovePossible(board, move);
+    if(!movePossible) return false;
+
+    let rankDifference : number = Math.abs(rankSubstract(move));
+    let fileDifference : number = Math.abs(fileSubstract(move));
+
+    // "L"-shape is a sum of 3 non-opposite moves that have a range of 1
+    if((rankDifference + fileDifference) != 3){
+        return false;
+    }
+
+    //Exclude moves where the range is 3 on a single line
+    if((rankDifference > 2) || (fileDifference > 2)){
+        return false;
+    }
+
+    return true;
+
+
+    /*
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
 
@@ -271,6 +312,7 @@ export function knightMove(board: Chessboard, move: Move): boolean {
         return movePossible;
     }
     return false;
+    */
 }
 
 
@@ -283,7 +325,7 @@ export function knightMove(board: Chessboard, move: Move): boolean {
  * @param move
  */
 export function queenMove(board: Chessboard, move: Move): boolean {
-    // #TODO: Implement this function
+    
     let movePossible : boolean = isMovePossible(board, move);
     if(!movePossible) return false;
 
