@@ -257,8 +257,6 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
             if(!isEmpty(board, moveToCheck)) return false;
         }
     }
-    console.log("Depart : " + move.from.file + ' ; ' + move.from.rank)
-    console.log("Arrivé : " + move.to.file + ' ; ' + move.to.rank)
     return true;
 }
 
