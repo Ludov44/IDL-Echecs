@@ -223,42 +223,38 @@ export function bishopMove(board: Chessboard, move: Move): boolean {
     }
     //Bottom left diagonal
     if(rankDifference < 0 && fileDifference < 0){
-        let rankToCheck : number = move.from.rank;
-        let fileToCheck : number = move.from.file;
+        let moveToCheck : Position = {file : move.from.file, rank : move.from.rank};
         for(let i = 1; i <= Math.abs(rankDifference); i++){
-            rankToCheck--;
-            fileToCheck--;
-            if(!isEmpty(board, {file : fileToCheck, rank : rankToCheck})) return false;
+            moveToCheck.rank--;
+            moveToCheck.file--;
+            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     //Top left diagonal
     if(rankDifference > 0 && fileDifference < 0){
-        let rankToCheck : number = move.from.rank;
-        let fileToCheck : number = move.from.file;
+        let moveToCheck : Position = {file : move.from.file, rank : move.from.rank};
         for(let i = 1; i <= Math.abs(rankDifference); i++){
-            rankToCheck++;
-            fileToCheck--;
-            if(!isEmpty(board, {file : fileToCheck, rank : rankToCheck})) return false;
+            moveToCheck.rank++;
+            moveToCheck.file--;
+            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     //Bottom right diagonal
     if(rankDifference < 0 && fileDifference > 0){
-        let rankToCheck : number = move.from.rank;
-        let fileToCheck : number = move.from.file;
+        let moveToCheck : Position = {file : move.from.file, rank : move.from.rank};
         for(let i = 1; i <= Math.abs(rankDifference); i++){
-            rankToCheck--;
-            fileToCheck++;
-            if(!isEmpty(board, {file : fileToCheck, rank : rankToCheck})) return false;
+            moveToCheck.rank--;
+            moveToCheck.file++;
+            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     //Top right diagonal
     if(rankDifference > 0 && fileDifference > 0){
-        let rankToCheck : number = move.from.rank;
-        let fileToCheck : number = move.from.file;
+        let moveToCheck : Position = {file : move.from.file, rank : move.from.rank};
         for(let i = 1; i <= Math.abs(rankDifference); i++){
-            rankToCheck++;
-            fileToCheck++;
-            if(!isEmpty(board, {file : fileToCheck, rank : rankToCheck})) return false;
+            moveToCheck.rank++;
+            moveToCheck.file++;
+            if(!isEmpty(board, moveToCheck)) return false;
         }
     }
     console.log("Depart : " + move.from.file + ' ; ' + move.from.rank)
