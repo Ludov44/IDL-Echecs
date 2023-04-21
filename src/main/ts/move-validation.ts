@@ -18,10 +18,12 @@ function isMovePossible(board: Chessboard, move: Move): boolean{
 }
 
 function rankSubstract(move : Move) : number{
-    return move.to.rank - move.from.rank;    
+    const valeur : number = move.to.rank - move.from.rank;
+    return valeur;
 }
 function fileSubstract(move : Move) : number{
-    return move.to.file - move.from.file;    
+    const valeur : number = move.to.file - move.from.file;
+    return valeur; 
 }
 
 
@@ -155,8 +157,8 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
     let rankDifference : number = rankSubstract(move);
     let fileDifference : number = fileSubstract(move);
-    let posIntermediaire : Position = move.from;
-
+    let posIntermediaireRank : number = move.from.rank; // nécessaire car Typescript ne fait pas de copie des sous objets, il les prends en référence
+    let posIntermediaireFile : number= move.from.file;
     //check if move is a line
     if((rankDifference != 0) && (fileDifference != 0)){
         return false;
@@ -164,7 +166,8 @@ export function rookMove(board: Chessboard, move: Move): boolean {
 
     if(rankDifference > 0){ //top movement
         for(let i : number = 1; i < rankDifference; i++){
-            posIntermediaire.rank++;
+            posIntermediaireRank++;
+            let posIntermediaire : Position = {rank : posIntermediaireRank, file : posIntermediaireFile};
             if(!isEmpty(board, posIntermediaire)){
                 return false;
             }
@@ -172,7 +175,8 @@ export function rookMove(board: Chessboard, move: Move): boolean {
     }
     if(rankDifference < 0){ //bottom movement
         for(let i : number = 1; i < Math.abs(rankDifference); i++){
-            posIntermediaire.rank--;
+            posIntermediaireRank--;
+            let posIntermediaire : Position = {rank : posIntermediaireRank, file : posIntermediaireFile};
             if(!isEmpty(board, posIntermediaire)){
                 return false;
             }
@@ -180,7 +184,8 @@ export function rookMove(board: Chessboard, move: Move): boolean {
     }
     if(fileDifference > 0){ //right movement
         for(let i : number = 1; i < fileDifference; i++){
-            posIntermediaire.file++;
+            posIntermediaireFile++;
+            let posIntermediaire : Position = {rank : posIntermediaireRank, file : posIntermediaireFile};
             if(!isEmpty(board, posIntermediaire)){
                 return false;
             }
@@ -188,7 +193,8 @@ export function rookMove(board: Chessboard, move: Move): boolean {
     }
     if(fileDifference < 0){ //left movement
         for(let i : number = 1; i < Math.abs(fileDifference); i++){
-            posIntermediaire.file--;
+            posIntermediaireFile--;
+            let posIntermediaire : Position = {rank : posIntermediaireRank, file : posIntermediaireFile};
             if(!isEmpty(board, posIntermediaire)){
                 return false;
             }
